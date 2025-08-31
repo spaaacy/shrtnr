@@ -21,7 +21,7 @@ const Auth = () => {
     <button
       onClick={signInWithGoogle}
       type="button"
-      className="hover:cursor-pointer gap-2 flex items-center justify-center font-bold py-4 px-6 bg-gray-200 rounded-full"
+      className="hover:cursor-pointer gap-2 flex items-center justify-center font-bold py-4 px-6 bg-gray-200 rounded-full mx-auto"
     >
       <div className="h-6 w-6 relative">
         <Image src={"/google.svg"} alt="google" fill={true} />
