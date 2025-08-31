@@ -1,7 +1,7 @@
 import { supabase } from "@/utils/supabase";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   try {
     const { url, userId, id } = await req.json();
     const { error } = await supabase.from("url").insert({ user_id: userId, id, url });
