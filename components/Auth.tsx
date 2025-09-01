@@ -18,16 +18,19 @@ const Auth = () => {
   };
 
   return (
-    <button
-      onClick={signInWithGoogle}
-      type="button"
-      className="hover:cursor-pointer gap-2 flex items-center justify-center font-bold py-4 px-6 bg-gray-200 rounded-full mx-auto"
-    >
-      <div className="h-6 w-6 relative">
-        <Image src={"/google.svg"} alt="google" fill={true} />
-      </div>
-      <span>Continue with Google</span>
-    </button>
+    <div className="flex flex-col gap-2 items-center w-full">
+      <h3 className="text-neutral-600 font-medium">Sign in to Get Started</h3>
+      <button
+        onClick={signInWithGoogle}
+        type="button"
+        className="hover:cursor-pointer gap-2 flex items-center justify-center font-bold py-4 px-6 bg-gray-200 rounded-full mx-auto"
+      >
+        <div className="h-6 w-6 relative">
+          <Image src={"/google.svg"} alt="google" fill={true} />
+        </div>
+        <span>Continue with Google</span>
+      </button>
+    </div>
   );
 };
 
