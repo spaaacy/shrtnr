@@ -5,12 +5,12 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const fetchUrl = async () => {
     const slug = (await params).slug;
     try {
-      const { data, error } = await supabase.from("url").select().eq("id", slug).single();
+      const { data, error } = await supabase.rpc("fetch_url_and_increment", { p_id: slug });
       if (error) throw error;
-      return data.url;
+      return data;
     } catch (error) {
       console.error(error);
-      return "/";
+      return "/404";
     }
   };
 

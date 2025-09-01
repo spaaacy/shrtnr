@@ -3,6 +3,7 @@ import generateId from "@/utils/generateId";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { FaClipboard } from "react-icons/fa";
 
 const Dashboard = () => {
   const [urlInput, setUrlInput] = useState<string>("");
@@ -24,13 +25,14 @@ const Dashboard = () => {
         const { error } = await response.json();
         throw error;
       }
+      setUrlInput("")
+      toast.success("URL generatad successfully!")
     } catch (error) {
       console.error(error);
       toast.error("Oops, something went wrong...");
     }
 
     setShortenedUrl(url);
-    console.log(session);
   };
 
   return (
@@ -47,7 +49,7 @@ const Dashboard = () => {
             }}
             id="url"
             type="url"
-            className="border-2 border-fuchsia-600 rounded-lg w-full p-2 focus:outline-none "
+            className="border-2 border-blue-600 rounded-lg w-full p-2 focus:outline-none "
           />
           <button
             type="submit"
@@ -58,10 +60,29 @@ const Dashboard = () => {
         </div>
       </form>
       {shortenedUrl && (
-        <div className="absolute -bottom-8">
-          <Link target="_blank" href={shortenedUrl} className="text-blue-500 hover:text-blue-600 hover:underline">
-            {shortenedUrl}
-          </Link>
+        <div className="absolute -bottom-12">
+          <div className="flex gap-2 items-center">
+            <Link target="_blank" href={shortenedUrl} className="bg-gray-300 text-gray-600 px-2 py-1 rounded-lg hover:underline">
+              {shortenedUrl}
+            </Link>
+            <button
+              type="button"
+              className="text-gray-500 cursor-pointer"
+              onClick={() => {
+                navigator.clipboard
+                  .writeText(shortenedUrl)
+                  .then(() => {
+                    toast.success("URL copied to clipboard!");
+                  })
+                  .catch((error) => {
+                    console.error("Failed to copy: ", error);
+                    toast.error("Failed to copy URL.");
+                  });
+              }}
+            >
+              <FaClipboard size={20} />
+            </button>
+          </div>
         </div>
       )}
     </div>
