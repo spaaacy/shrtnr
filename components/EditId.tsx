@@ -62,7 +62,7 @@ const EditId = ({ id, setEditId, setLinks }: EditIdProps) => {
       value={input}
       onChange={(e) => setInput(e.target.value)}
       type="text"
-      className="bg-gray-300 text-gray-600 text-sm px-2 py-1 rounded-lg focus:outline-none"
+      className="bg-gray-200 text-right w-[8rem] text-gray-600 text-sm px-2 py-1 rounded-full focus:outline-none"
     />
   );
 };

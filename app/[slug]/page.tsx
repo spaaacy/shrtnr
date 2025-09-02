@@ -5,9 +5,15 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const fetchUrl = async () => {
     const slug = (await params).slug;
     try {
-      const { data, error } = await supabase.rpc("fetch_url_and_increment", { p_id: slug });
-      if (error) throw error;
-      return data;
+      const request = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/url/redirect`, {
+        method: "POST",
+        body: JSON.stringify({ slug }),
+      });
+      const result = await request.json();
+      if (request.status !== 200) {
+        throw result.error;
+      }
+      return result.url;
     } catch (error) {
       console.error(error);
       return "/404";

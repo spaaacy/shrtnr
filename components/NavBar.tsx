@@ -25,8 +25,8 @@ const NavBar = ({
   return (
     <nav className="flex gap-2 items-center justify-start w-full max-w-[1440px] px-10 py-8 mx-auto">
       <Link href={"/"} className="flex flex-col items-start justify-center">
-        <p className="font-bold text-5xl text-blue-700">Shrtnr</p>
-        <p className="font-extralight text-gray-500">Links made easy</p>
+        <p className="font-bold text-5xl text-[#f1c40f] max-lg:text-3xl">Shrtnr</p>
+        <p className="font-extralight text-gray-200 max-lg:text-xs">Links made easy</p>
       </Link>
 
       {session && (
@@ -37,7 +37,7 @@ const NavBar = ({
               onClick={() => {
                 setShowMyLinks(showMyLinks ? false : true);
               }}
-              className="hover:cursor-pointer ml-auto bg-blue-500 text-white font-medium px-4 py-2 rounded-md hover:bg-blue-600"
+              className="hover:cursor-pointer ml-auto bg-white text-black font-medium px-4 py-2 text-sm  rounded-full"
             >
               {showMyLinks ? "Go Back" : "My Links"}
             </button>
@@ -45,7 +45,7 @@ const NavBar = ({
           <button
             type="button"
             onClick={signOut}
-            className="hover:cursor-pointer bg-red-500 text-white font-medium px-4 py-2 rounded-md hover:bg-red-600"
+            className="hover:cursor-pointer bg-red-500 text-white font-medium px-4 py-2 rounded-full text-sm  hover:bg-red-600"
           >
             Sign Out
           </button>

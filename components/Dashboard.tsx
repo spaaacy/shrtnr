@@ -49,11 +49,11 @@ const Dashboard = () => {
             }}
             id="url"
             type="url"
-            className="border-2 border-blue-600 rounded-lg w-full p-2 focus:outline-none "
+            className="border-2 bg-white border-gray-600 rounded-l-full w-full p-2 focus:outline-none "
           />
           <button
             type="submit"
-            className="bg-green-600 hover:bg-green-700 hover:cursor-pointer text-white font-semibold px-4 py-2 rounded"
+            className="bg-[#f1c40f] hover:bg-[#f1c40f] hover:cursor-pointer text-shadow-2xs text-shadow-black font-semibold px-6 py-2 rounded-r-full"
           >
             Go
           </button>

@@ -30,7 +30,7 @@ const MyLinks = () => {
       });
       const result = await response.json();
       if (response.status === 200) {
-        // setLinks(result.links);
+        setLinks(result.links);
       } else {
         throw result.error;
       }
@@ -41,40 +41,42 @@ const MyLinks = () => {
   };
 
   return (
-    <div className="flex flex-col gap-2 px-10 max-w-[1440px] w-full mx-auto">
+    <div className="flex flex-col gap-2 px-10 max-w-[1280px] w-full mx-auto">
       <div className="flex items-center">
         <h3 className="text-2xl font-semibold">All Links</h3>
         <p className="ml-auto font-semibold">Visits</p>
       </div>
       {links.length > 0 ? (
         <>
-          {links.map((l, i) => {
-            return (
-              <div key={i} className="flex gap-2 items-center">
-                <Link
-                  target="_blank"
-                  href={`${process.env.NEXT_PUBLIC_APP_URL}/${l.id}`}
-                  className="text-xl text-blue-500 hover:text-blue-600 hover:underline"
-                >
-                  {l.link}
-                </Link>
-                <div className="flex items-center ml-auto">
-                  {editId === l.id ? (
-                    <EditId id={l.id} setEditId={setEditId} setLinks={setLinks} />
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => setEditId(l.id)}
-                      className="cursor-pointer bg-gray-300 text-gray-600 text-sm px-2 py-1 rounded-lg"
-                    >
-                      <span className="font-bold">ID:</span> {l.id}
-                    </button>
-                  )}
-                  <p className="w-10 text-right">{l.total_visit}</p>
+          {links
+            .sort((a, b) => b.total_visit - a.total_visit)
+            .map((l, i) => {
+              return (
+                <div key={i} className="flex gap-2 items-start">
+                  <Link
+                    target="_blank"
+                    href={`${process.env.NEXT_PUBLIC_APP_URL}/${l.id}`}
+                    className="text-lg max-lg:text-base pr-8 text-blue-400 hover:text-blue-500 hover:underline break-all truncate" 
+                  >
+                    {l.link}
+                  </Link>
+                  <div className="flex items-center ml-auto flex-shrink-0">
+                    {editId === l.id ? (
+                      <EditId id={l.id} setEditId={setEditId} setLinks={setLinks} />
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setEditId(l.id)}
+                        className="cursor-pointer bg-gray-200 flex-shrink-0 text-gray-600 text-sm px-3 py-1 rounded-full"
+                      >
+                        {l.id}
+                      </button>
+                    )}
+                    <p className="w-12 text-right">{l.total_visit}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </>
       ) : (
         <p>No links found</p>
