@@ -16,7 +16,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       return result.url;
     } catch (error) {
       console.error(error);
-      return "/404";
+      return "/404?limit=true";
     }
   };
 

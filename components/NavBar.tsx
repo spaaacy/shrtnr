@@ -37,7 +37,7 @@ const NavBar = ({
               onClick={() => {
                 setShowMyLinks(showMyLinks ? false : true);
               }}
-              className="hover:cursor-pointer ml-auto bg-white text-black font-medium px-4 py-2 text-sm  rounded-full"
+              className="cursor-pointer ml-auto bg-white text-black font-medium px-4 py-2 text-sm  rounded-full"
             >
               {showMyLinks ? "Go Back" : "My Links"}
             </button>
@@ -45,7 +45,7 @@ const NavBar = ({
           <button
             type="button"
             onClick={signOut}
-            className="hover:cursor-pointer bg-red-500 text-white font-medium px-4 py-2 rounded-full text-sm  hover:bg-red-600"
+            className="cursor-pointer bg-red-500 text-white font-medium px-4 py-2 rounded-full text-sm  hover:bg-red-600"
           >
             Sign Out
           </button>

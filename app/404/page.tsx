@@ -2,9 +2,17 @@
 
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
-import { Toaster } from "react-hot-toast";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
+  const searchParams = useSearchParams()
+
+  useEffect(()=>{
+    if (searchParams.has("limit")) toast.error("Too many requests")
+  },[])
+  
   return (
     <div className="flex flex-col items-center min-h-screen">
       <NavBar showMyLinks={null} setShowMyLinks={null} />
