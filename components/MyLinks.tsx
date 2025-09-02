@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import EditId from "./EditId";
+import { FaClipboard } from "react-icons/fa";
 
 export interface Links {
   link: string;
@@ -51,15 +52,34 @@ const MyLinks = () => {
           {links
             .sort((a, b) => b.total_visit - a.total_visit)
             .map((l, i) => {
+              const redirect = `${process.env.NEXT_PUBLIC_APP_URL}/${l.id}`
+              
               return (
-                <div key={i} className="flex gap-2 items-start">
+                <div key={i} className="flex gap-2 items-center">
                   <Link
                     target="_blank"
-                    href={`${process.env.NEXT_PUBLIC_APP_URL}/${l.id}`}
-                    className="text-lg max-lg:text-base pr-8 text-blue-400 hover:text-blue-500 hover:underline break-all truncate" 
+                    href={redirect}
+                    className="text-lg max-lg:text-base text-blue-400 hover:text-blue-500 hover:underline break-all truncate"
                   >
                     {l.link}
                   </Link>
+                  <button
+                    type="button"
+                    className="text-gray-300 cursor-pointer"
+                    onClick={() => {
+                      navigator.clipboard
+                        .writeText(redirect)
+                        .then(() => {
+                          toast.success("URL copied to clipboard!");
+                        })
+                        .catch((error) => {
+                          console.error("Failed to copy: ", error);
+                          toast.error("Failed to copy URL.");
+                        });
+                    }}
+                  >
+                    <FaClipboard size={20} />
+                  </button>
                   <div className="flex items-center ml-auto flex-shrink-0">
                     {editId === l.id ? (
                       <EditId id={l.id} setEditId={setEditId} setLinks={setLinks} />

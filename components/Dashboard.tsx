@@ -67,7 +67,7 @@ const Dashboard = () => {
             </Link>
             <button
               type="button"
-              className="text-gray-500 cursor-pointer"
+              className="text-gray-300 cursor-pointer"
               onClick={() => {
                 navigator.clipboard
                   .writeText(shortenedUrl)
