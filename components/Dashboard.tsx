@@ -49,11 +49,11 @@ const Dashboard = () => {
             }}
             id="url"
             type="url"
-            className="border-2 bg-white border-gray-600 rounded-l-full w-full p-2 focus:outline-none "
+            className="border-2 bg-white border-gray-600 rounded-l-full w-full p-2 focus:outline-none text-black"
           />
           <button
             type="submit"
-            className="bg-[#f1c40f] hover:bg-[#f1c40f] hover:cursor-pointer text-shadow-2xs text-shadow-black font-semibold px-6 py-2 rounded-r-full"
+            className="bg-[#f1c40f] hover:bg-[#f1c40f] cursor-pointer text-shadow-2xs text-shadow-black font-semibold px-6 py-2 rounded-r-full"
           >
             Go
           </button>
@@ -62,7 +62,7 @@ const Dashboard = () => {
       {shortenedUrl && (
         <div className="absolute -bottom-12">
           <div className="flex gap-2 items-center">
-            <Link target="_blank" href={shortenedUrl} className="bg-gray-300 text-gray-600 px-2 py-1 rounded-lg hover:underline">
+            <Link target="_blank" href={shortenedUrl} className="text-lg max-lg:text-base text-blue-400 hover:text-blue-500 break-all truncate">
               {shortenedUrl}
             </Link>
             <button

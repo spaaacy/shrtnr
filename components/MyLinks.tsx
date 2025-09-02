@@ -59,7 +59,7 @@ const MyLinks = () => {
                   <Link
                     target="_blank"
                     href={redirect}
-                    className="text-lg max-lg:text-base text-blue-400 hover:text-blue-500 hover:underline break-all truncate"
+                    className="text-lg max-lg:text-base text-blue-400 hover:text-blue-500 break-all truncate"
                   >
                     {l.link}
                   </Link>

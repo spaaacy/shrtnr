@@ -24,10 +24,10 @@ const NavBar = ({
 
   return (
     <nav className="flex gap-2 items-center justify-start w-full max-w-[1440px] px-10 py-8 mx-auto">
-      <Link href={"/"} className="flex flex-col items-start justify-center">
+      <div className="flex flex-col items-start justify-center">
         <p className="font-bold text-5xl text-[#f1c40f] max-lg:text-3xl">Shrtnr</p>
         <p className="font-extralight text-gray-200 max-lg:text-xs">Links made easy</p>
-      </Link>
+      </div>
 
       {session && (
         <div className="flex items-center ml-auto gap-2">
